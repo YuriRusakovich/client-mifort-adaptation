@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="card col-6">
+    <div *ngIf="currentFileUpload" class="progress">
+      <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar"
+           attr.aria-valuenow="{{progress.percentage}}"
+           aria-valuemin="0" aria-valuemax="100" [ngStyle]="{width:progress.percentage+'%'}">
+        {{progress.percentage}}%
+      </div>
+    </div>
+
+    <div>
+      <label class="btn btn-secondary btn-file" style="margin-top: 9px;">
+        Browse <input type="file" (change)="selectFile($event)" style="display: none" [disabled]="progress.percentage !== 0">
+      </label>
+      <span *ngIf="currentFileUpload">{{currentFileUpload.name}}</span>
+
+      <button class="btn btn-success" [disabled]="!selectedFiles" (click)="upload()">Upload</button>
+    </div>
+  </div>
+  <div class="card col-6">
+    <list-upload [fileUploads]="fileUploads" *ngIf="isFilesExist"></list-upload>
+  </div>
+</div>

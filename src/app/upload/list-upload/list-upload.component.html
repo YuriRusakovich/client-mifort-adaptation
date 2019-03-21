@@ -1,0 +1,10 @@
+<div style="padding: 10px;">
+  <div class="panel panel-primary">
+    <div class="panel-heading">List of Files</div>
+      <ul class="list-group">
+        <li class="list-group-item" *ngFor="let file of fileUploads | async">
+          <details-upload [fileUpload]='file'></details-upload>
+        </li>
+      </ul>
+  </div>
+</div>
